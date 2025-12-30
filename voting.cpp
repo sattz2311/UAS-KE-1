@@ -1,27 +1,39 @@
 #include <iostream>
 using namespace std;
 
-int main () {
-    string buku[3] = {"algoritma", "database","jaringan"};
-    int suara[3] = {0,0,0}, pilih;
-    char ulang;
+int main() {
+    string buku[3] = {"Algoritma", "Database", "Jaringan"};
+    int suara[3] = {0, 0, 0};
+    int menu, pilih;
 
     do {
-        cout << "\n== VOTING BUKU FAVORIT ===\n";
-        for(int i=0;i<3;i++)
-        cout << i+i << "." << buku[i] << endl;
+        cout << "\n=== MENU VOTING BUKU ===\n";
+        cout << "1. Voting Buku\n";
+        cout << "2. Lihat Hasil\n";
+        cout << "3. Keluar\n";
+        cout << "Pilih: ";
+        cin >> menu;
 
-        cout << "pilih buku (1-3) ";
-        cin >> pilih;
-        suara[pilih-1]++;
+        if (menu == 1) {
+            cout << "\nPilih Buku Favorit:\n";
+            for (int i = 0; i < 3; i++) {
+                cout << i+1 << ". " << buku[i] << endl;
+            }
+            cout << "Pilihan: ";
+            cin >> pilih;
 
-        cout << "VOTING LAGI ? (y/n) ";
-        cin >>  ulang ;
-    } while (ulang == 'y');
+            suara[pilih-1]++;
+            cout << "Voting berhasil\n";
+        }
+        else if (menu == 2) {
+            cout << "\nHASIL VOTING:\n";
+            for (int i = 0; i < 3; i++) {
+                cout << buku[i] << " : " << suara[i] << " suara\n";
+            }
+        }
 
-   cout << "\nhasil voting\n";
-    for(int i=0;i<3;i++)
-    cout << buku[i] << " : " << suara[i] << "suara\n";
+    } while (menu != 3);
 
+    cout << "Program selesai\n";
     return 0;
 }
